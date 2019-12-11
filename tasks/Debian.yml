@@ -43,7 +43,7 @@
   until: zabbix_web_php_dependency_install is succeeded
   when: >
     ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '<')))
-    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '<')) )
+    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9', '<')) )
   tags:
     - zabbix-web
     - init
@@ -58,7 +58,7 @@
   until: zabbix_web_php_dependency_install is succeeded
   when: >
     ( ansible_distribution == 'Ubuntu' and (ansible_distribution_version is version_compare('16.04', '>=')))
-    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9.0', '>=')) )
+    or ( ansible_distribution == 'Debian' and (ansible_distribution_version is version_compare('9', '>=')) )
   tags:
     - zabbix-server
     - init
