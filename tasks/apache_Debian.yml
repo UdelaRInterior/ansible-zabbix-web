@@ -40,7 +40,7 @@
     state: link
   when: zabbix_vhost
   notify:
-    - restart apache
+    - restart apa
   tags:
     - zabbix-server
     - init
