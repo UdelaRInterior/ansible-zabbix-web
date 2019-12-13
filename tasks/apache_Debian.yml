@@ -39,10 +39,13 @@
     group: "{{ apache_group }}"
     state: link
   when: zabbix_vhost
-  notify:
-    - restart apa
   tags:
     - zabbix-server
     - init
     - config
     - apache
+
+- name: "Debian | Restart webserver"
+  service:
+    name: apache2
+    state: restarted
