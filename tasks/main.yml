@@ -72,3 +72,34 @@
     - ansible_selinux.status == "enabled"
     - zabbix_apache_can_connect_ldap|bool
   tags: selinux
+
+- name: "Install zabbix-api on remote host"
+  pip:
+    name: zabbix-api
+    state: present
+  # when:
+  #   - zabbix_api_create_hosts | bool
+
+- name: "Create Zabbix API user"
+  zabbix_user:
+    server_url: "{{ zabbix_url }}"
+    login_user: "{{ zabbix_default_Admin_user }}"
+    login_password: "{{ zabbix_default_Admin_pass }}"
+    #state: present
+    username: "{{ zabbix_api_user }}"
+    name: "Zabbix"
+    surname: "API"
+    passwd: "{{ vault_ticholo_zabbix_admin_pass }}"
+    type: 3
+    usergroups:
+          - "Zabbix administrators"
+  # when:
+  #   - zabbix_change_default_api_pass | bool
+
+  # - name: "Remove default Zabbix Admin user"
+  # zabbix_user:
+  #   server_url: "{{ zabbix_url }}"
+  #   login_user: "{{ zabbix_api_user }}"
+  #   login_password: "{{ vault_ticholo_zabbix_admin_pass }}"
+  #   state: absent
+  #   username: "{{ zabbix_default_Admin_user }}"
