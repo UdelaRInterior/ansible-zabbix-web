@@ -96,10 +96,14 @@
   # when:
   #   - zabbix_change_default_api_pass | bool
 
-  # - name: "Remove default Zabbix Admin user"
-  # zabbix_user:
-  #   server_url: "{{ zabbix_url }}"
-  #   login_user: "{{ zabbix_api_user }}"
-  #   login_password: "{{ vault_ticholo_zabbix_admin_pass }}"
-  #   state: absent
-  #   username: "{{ zabbix_default_Admin_user }}"
+- name: "Disable default Zabbix Admin user"
+  zabbix_user:
+    server_url: "{{ zabbix_url }}"
+    login_user: "{{ zabbix_api_user }}"
+    login_password: "{{ vault_ticholo_zabbix_admin_pass }}"
+    username: "{{ zabbix_default_Admin_user }}"
+    passwd: "{{ zabbix_default_Admin_pass }}"
+    type: 3
+    usergroups:
+      - "Zabbix administrators"
+      - "Disabled"
