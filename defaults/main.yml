@@ -64,6 +64,11 @@ zabbix_server_dbport: 5432
 zabbix_default_Admin_user: Admin
 zabbix_default_Admin_pass: zabbix
 
+# Set true to disable Admin user and create custom api user
+zabbix_create_api_user: False
+zabbix_api_user: zabbix_api
+zabbix_api_pass: zabbix_api
+
 # Elasticsearch
 # zabbix_server_history_url:
 #  - "'uint' => 'http://localhost:9200'"
