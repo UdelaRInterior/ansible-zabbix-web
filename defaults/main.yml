@@ -60,6 +60,10 @@ zabbix_server_dbuser: zabbix-server
 zabbix_server_dbpassword: zabbix-server
 zabbix_server_dbport: 5432
 
+# Zabbix server default credentials
+zabbix_default_Admin_user: Admin
+zabbix_default_Admin_pass: zabbix
+
 # Elasticsearch
 # zabbix_server_history_url:
 #  - "'uint' => 'http://localhost:9200'"
